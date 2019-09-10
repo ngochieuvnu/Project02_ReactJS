@@ -1,6 +1,18 @@
 import React, { Component } from 'react';
 
 class Sort extends Component {
+    sortAZ = () => {
+        this.props.onClickSort("AZ");
+    }
+    sortZA = () => {
+        this.props.onClickSort("ZA");
+    }
+    sortActive = () => {
+        this.props.onClickSort("active");
+    }
+    sortVisible =()=>{
+        this.props.onClickSort("visible");
+    }
     render() {
         return (
             <div className="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -10,22 +22,22 @@ class Sort extends Component {
                     </button>
                     <ul className="dropdown-menu" aria-labelledby="dropdownMenu1">
                         <li>
-                            <a role="button">
+                            <button  onClick={this.sortAZ}>
                                 <span className="fa fa-sort-alpha-asc pr-5">
                                     Tên A-Z
-              </span>
-                            </a>
+                                </span>
+                            </button>
                         </li>
                         <li>
-                            <a role="button">
+                            <button  onClick={this.sortZA}>
                                 <span className="fa fa-sort-alpha-desc pr-5">
                                     Tên Z-A
-              </span>
-                            </a>
+                            </span>
+                            </button>
                         </li>
                         <li role="separator" className="divider" />
-                        <li><a role="button">Trạng Thái Kích Hoạt</a></li>
-                        <li><a role="button">Trạng Thái Ẩn</a></li>
+                        <li><button  onClick={this.sortActive}>Trạng Thái Kích Hoạt</button></li>
+                        <li><button  onClick={this.sortVisible}>Trạng Thái Ẩn</button></li>
                     </ul>
                 </div>
             </div>

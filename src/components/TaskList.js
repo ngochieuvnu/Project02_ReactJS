@@ -1,9 +1,36 @@
 import React, { Component } from 'react';
 import TaskItem from './TaskItem';
 class TaksList extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            autoSearch : ""
+        }
+    }
+    
+    onClickStatus = (id) => {
+        this.props.changeStatus(id);
+    }
+    onClickDelete = (id) => {
+        this.props.deleteTask(id)
+    }
+    onHandleChange = (event) => {
+        var target = event.target;
+        var name = target.name;
+        this.setState({
+            
+        })
+    }
     render() {
-        let element = this.props.tasks.map((task,index)=>{
-            return <TaskItem key={index} id = {task.id} name = {task.name} status = {task.status}/>
+        let element = this.props.tasks.map((task, index) => {
+            return <TaskItem
+                key={index}
+                id={task.id}
+                name={task.name}
+                status={task.status}
+                onClickStatus={this.onClickStatus}
+                onClickDelete={this.onClickDelete}
+            />
         });
         return (
             <div className="row mt-15">
@@ -21,7 +48,12 @@ class TaksList extends Component {
                             <tr>
                                 <td />
                                 <td>
-                                    <input type="text" className="form-control" />
+                                    <input
+                                        type="text"
+                                        className="form-control"
+                                        onChange={this.onHandleChange}
+                                        name = "autoSearch"
+                                    />
                                 </td>
                                 <td>
                                     <select className="form-control">
